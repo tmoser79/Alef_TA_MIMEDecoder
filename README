@@ -43,6 +43,11 @@ This add-on relies on Python and its `email` standard library (an email and MIME
 There were some issue with Japanese charset. This has to be investigated more.
 
 # Release Notes
-- 1.0.0     initial release
-- 1.0.1     fixed cosmetic issues
-- 1.0.2     fixed an issue: command failed when an event does not contain a field being decoded (exception)
+1.0.0    
+    - initial release
+1.0.1
+    - fixed cosmetic issues
+1.0.2
+    - fixed an issue: command failed when an event does not contain a field being decoded (exception)
+1.0.3
+    - fixed an issue: command failed in Splunk 8.1.1 (python 3.7.8) for not following strictly case-sensitive class names

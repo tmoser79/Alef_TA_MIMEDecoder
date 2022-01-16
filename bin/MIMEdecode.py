@@ -30,7 +30,7 @@ from email.header import Header, decode_header
 from splunklib.searchcommands import dispatch, StreamingCommand, Option, Configuration, validators
 import six
 
-""" An MIMEDecoder that takes CSV as input, performs a email.Header.decode_header
+""" An MIMEDecoder that takes CSV as input, performs a email.header.decode_header
     on the field, then returns the decoded text in CSV results
 """
 
@@ -39,20 +39,20 @@ def getmailheader(header_text, default="ascii"):
        Note: This function works by itself but if there are multiple strings that 
              need decoded you get encoding in the middle of the results"""
     try:
-        headers=email.Header.decode_header(header_text)
-    except email.Errors.HeaderParseError:
+        headers=email.header.decode_header(header_text)
+    except email.errors.HeaderParseError:
     # If the string doesn't decode correctly try stripping a few end characters
         header_len=len(header_text)
         if header_len>10:
             try:
-                headers=email.Header.decode_header(header_text[0:header_len-3]+'?=')
-            except email.Errors.HeaderParseError:
+                headers=email.header.decode_header(header_text[0:header_len-3]+'?=')
+            except email.errors.HeaderParseError:
                 try:
-                    headers=email.Header.decode_header(header_text[0:header_len-4]+'?=')
-                except email.Errors.HeaderParseError:
+                    headers=email.header.decode_header(header_text[0:header_len-4]+'?=')
+                except email.errors.HeaderParseError:
                     try:
-                        headers=email.Header.decode_header(header_text[0:header_len-5]+'?=')
-                    except email.Errors.HeaderParseError:
+                        headers=email.header.decode_header(header_text[0:header_len-5]+'?=')
+                    except email.errors.HeaderParseError:
                     # If all else fails return ***CORRUPTED***
                         return "***CORRUPTED***"
         for i, (text, charset) in enumerate(headers):
