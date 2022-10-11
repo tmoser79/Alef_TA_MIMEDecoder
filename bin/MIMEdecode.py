@@ -24,6 +24,7 @@
 import csv
 import sys
 import email
+import re
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "lib"))
 from email.header import Header, decode_header
@@ -124,6 +125,7 @@ def main(message_subject):
     # Else remove extra charaters not part of the encoding and decode the field 
         MIMEDecode = MIMEEncode.replace('??','')
         MIMEDecode = MIMEDecode.replace('? ','')
+        MIMEDecode = re.sub("\?\s*", "", MIMEDecode)
         MIMEDecode = decode_subject(MIMEDecode)
         #result[MIMEDecode] = getmailheader(result[MIMEEncode])
     if MIMEDecode:
