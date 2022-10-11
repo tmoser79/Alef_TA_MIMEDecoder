@@ -24,6 +24,7 @@
 import csv
 import sys
 import email
+import re
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "lib"))
 from email.header import Header, decode_header
