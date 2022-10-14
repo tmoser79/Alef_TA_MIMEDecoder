@@ -1,4 +1,5 @@
 .git
-.local
+.gitignore
+local
 Makefile
 splunkbase_exclusions.txt
