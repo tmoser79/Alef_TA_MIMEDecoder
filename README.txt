@@ -54,5 +54,7 @@ There were some issue with Japanese charset. This has to be investigated more.
 1.0.4
     - fixed an issue: upgraded Splunk python SDK to version 1.6.15 to fix a bug SPL-194426 
 1.0.5
+    - skipped
+1.0.6
     - fixed an issue: decoding function was failing on strings beginning with "space" after '?Q?' sequence
     - upgrade: upgraded Splunk Python SDK to version 1.7.2
