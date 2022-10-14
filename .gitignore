@@ -1,0 +1,9 @@
+# OSX noise
+.DS_Store
+
+# Compiled python files
+*.pyc
+
+# Local stuff
+local/
+local.meta
