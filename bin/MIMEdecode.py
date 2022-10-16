@@ -123,9 +123,11 @@ def main(message_subject):
         MIMEDecode = MIMEEncode
     else:
     # Else remove extra charaters not part of the encoding and decode the field 
+	# remove extra space after '?Q?' as it breaks decoding function later
+        MIMEEncode = re.sub(r'(\?[qQ]\?)\s*', r'\1', MIMEEncode)
+	# remove the rest as per else statement
         MIMEDecode = MIMEEncode.replace('??','')
         MIMEDecode = MIMEDecode.replace('? ','')
-        MIMEDecode = re.sub("\?\s*", "", MIMEDecode)
         MIMEDecode = decode_subject(MIMEDecode)
         #result[MIMEDecode] = getmailheader(result[MIMEEncode])
     if MIMEDecode:
