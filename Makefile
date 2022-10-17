@@ -1,7 +1,11 @@
-SPLUNKBASE_EXCL = "splunkbase_exclusions.txt"
-APP = "Alef_TA_MIMEDecoder"
-RELEASE = "1.0.6"
+SHELL := "/bin/bash"
+SPLUNKBASE_EXCL := "splunkbase_exclusions.txt"
+APP := "Alef_TA_MIMEDecoder"
+RELEASE := $(shell cat default/app.conf | grep version | cut -f2 -d= | sed -E 's/ +//')
+
 splunkbase:
+	echo "Creating release $(RELEASE) for Splunkbase"; \
 	cd ..; \
-        tar --disable-copyfile -X $(APP)/$(SPLUNKBASE_EXCL) -cvzf $(APP)-$(RELEASE).tar.gz $(APP)
+	rm $(APP)-*; \
+	tar --disable-copyfile -X $(APP)/$(SPLUNKBASE_EXCL) -cvzf $(APP)-$(RELEASE).tar.gz $(APP)
 all: splunkbase
