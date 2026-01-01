@@ -62,3 +62,9 @@ There were some issue with Japanese charset. This has to be investigated more.
     - regenerated via Splunk Add-on Builder 4.1.3 to comply with the most recent Splunk Cloud App Inspect vetting checks
 1.0.8
     - regenerated via Splunk Add-on Builder 4.2 to comply with the most recent Splunk Cloud App Inspect vetting checks
+1.0.9
+    - No longer maintained in Splunk Add-on builder 
+    - update splunk-sdk to 2.1.1
+    - tested in Splunk 10.0.2
+
+
