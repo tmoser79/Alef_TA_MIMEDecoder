@@ -5,3 +5,4 @@ local
 *.pyc
 Makefile
 splunkbase_exclusions.txt
+metadata/local.meta

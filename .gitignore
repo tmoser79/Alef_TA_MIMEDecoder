@@ -6,5 +6,5 @@
 *.pyo
 
 # Local stuff
-local/
-local.meta
+#local/
+#local.meta
