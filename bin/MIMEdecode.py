@@ -145,7 +145,7 @@ class decodemimeCommand(StreamingCommand):
         for record in records:
             if field_in in record:
                 record[field_out] = main(record[field_in])
-                yield record
+            yield record
     
 if __name__ == "__main__":
     dispatch(decodemimeCommand, sys.argv, sys.stdin, sys.stdout, __name__)
