@@ -21,15 +21,13 @@
 #  file. If not, see <http://www.gnu.org/licenses/> for additional detail.
 ##########################################################################
 
-import csv
 import sys
 import email
 import re
-import sys, os
+import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "lib"))
-from email.header import Header, decode_header
-from splunklib.searchcommands import dispatch, StreamingCommand, Option, Configuration, validators
-import six
+from splunklib.searchcommands import dispatch, StreamingCommand, Configuration
+from splunklib import six
 
 """ An MIMEDecoder that takes CSV as input, performs a email.header.decode_header
     on the field, then returns the decoded text in CSV results
@@ -115,7 +113,10 @@ def decode_subject( subject ):
     return decoded
 
 def main(message_subject):
-    MIMEEncode = message_subject
+    if message_subject is None:
+        return None
+
+    MIMEEncode = str(message_subject)
  
     # only the MIMEEcode was provided, preform decoding where needed
     if MIMEEncode.find("=?") == -1:
@@ -140,6 +141,9 @@ def main(message_subject):
 class decodemimeCommand(StreamingCommand):
     def stream(self, records):
         # get the argument - fieldname with mime-encoded string
+        if len(self.fieldnames) < 2:
+            raise ValueError("Usage: | mimedecode <field_with_encoded_text> <field_with_decoded_text>")
+
         field_in = self.fieldnames[0]
         field_out = self.fieldnames[1]
         for record in records:
